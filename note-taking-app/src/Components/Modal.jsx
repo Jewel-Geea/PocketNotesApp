@@ -25,7 +25,6 @@ const Modal = ({ onSendData }) => {
       return;
     }
     const abbreviation = `${words[0][0].toUpperCase()}${words[1][0].toUpperCase()}`;
-    console.log("Abbreviation:", abbreviation);
     const user = {
       GroupName: inputValue,
       color: selectedColor,

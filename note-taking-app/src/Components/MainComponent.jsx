@@ -3,9 +3,8 @@ import ChatInterface from "./ChatInterface";
 import RightMainComponent from "./RightMainComponent";
 import { useState } from "react";
 const MainComponent = () => {
-
   //on progress
-  const [state, setState] = useState(false);
+  const [state, setState] = useState(true);
   const toggleChatVisibility = () => {
     setState(!state);
   };

@@ -56,12 +56,11 @@
   font-size: 24px;
   font-weight: 500;
   margin-bottom: 4px;
-  margin-left:10px;
+  margin-left: 10px;
   cursor: pointer;
   /* flex-wrap: wrap; */
   align-content: flex-end;
   justify-content: start;
-  width: calc(100% - 20px);
 }
 
 .PocketList p:first-child {
@@ -75,7 +74,12 @@
 }
 
 .PocketList.selected {
-  background-color: #2F2F2F2B;
+  background-color: #2f2f2f2b;
+  width: 100%;
+}
+
+.PocketListWrapper {
+  width: 12.5rem;
 }
 
 /* Modal Wrapper */
@@ -176,14 +180,13 @@ form {
   gap: 20px;
 }
 
-
 .RadioDiv input {
   cursor: pointer;
   appearance: none;
   width: 1.4rem;
   height: 1.4rem;
   border-radius: 50%;
-  margin-left: .5rem;
+  margin-left: 0.5rem;
 }
 
 /* Create Group Button */
@@ -274,16 +277,16 @@ img {
   flex-grow: 1;
   height: 100%;
   background-color: #dae5f5;
+  overflow-y: auto;
 }
 
 .chatInterfaceHeadingDiv {
   background-color: #001f8b;
   height: 98px;
   color: white;
-  /* padding-left: 13px; */
   overflow-x: hidden;
-  
-  width:calc(100% - 10px);
+  align-items: center;
+  width: calc(100% - 10px);
 }
 
 .chatInterfaceHeadingDiv p:first-of-type {
@@ -340,6 +343,10 @@ img {
 .chatView ul li:nth-child(2) {
   margin-right: 13px;
 }
+.chatViewWrapper {
+  height: calc(100vh - 254px);
+  overflow-y: auto;
+}
 
 /* Chat Input Area */
 
@@ -355,7 +362,7 @@ img {
   position: fixed;
   bottom: 0;
   border: 12px solid #001f8b;
-  height: calc(100% - 30px);
+  height: calc(100% - 337px);
   max-height: 159px;
 }
 
@@ -378,6 +385,11 @@ img {
   border: none;
   padding: 0;
   align-self: flex-end;
+}
+
+.sendButton:disabled {
+  opacity: 0.25;
+  cursor: not-allowed;
 }
 
 /* Responsive Styles */
