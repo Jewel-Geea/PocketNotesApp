@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Modal from "./Modal";
-import PocketHeadingDiv from "./pocketHeadingDiv";
+import PocketHeadingDiv from "./PocketHeadingDiv";
 import PocketList from "./PocketList";
 
 const LeftMainComponent = ({ check }) => {
