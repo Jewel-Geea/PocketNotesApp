@@ -1,26 +1,22 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
-const ChatInterface = ({ goLeft, check }) => {
+const ChatInterface = ({
+  chatKey,
+  selectedPocketData,
+  pocketIndex,
+  goLeft,
+}) => {
   const [message, setMessage] = useState("");
   const [chatMessages, setChatMessages] = useState([]);
 
-  const initialMessages = [
-    {
-      text: "Another productive way to use this tool to begin a daily writing routine. One way is to generate a random paragraph with the intention to try to rewrite it while still keeping the original meaning. The purpose here is to just get the writing started so that when the writer goes onto their day's writing projects, words are already flowing from their fingers.",
-      date: "9/Mar/2023",
-      time: "10:10 AM",
-    },
-  ];
-
+  // Fetch stored chat messages for the selected pocket index
   useEffect(() => {
-    const storedMessages = JSON.parse(localStorage.getItem("chatMessages"));
-    if (!storedMessages || storedMessages.length === 0) {
-      localStorage.setItem("chatMessages", JSON.stringify(initialMessages));
-      setChatMessages(initialMessages);
-    } else {
+    if (pocketIndex !== null) {
+      const storedMessages =
+        JSON.parse(localStorage.getItem(`chatMessages_${pocketIndex}`)) || [];
       setChatMessages(storedMessages);
     }
-  }, []);
+  }, [pocketIndex]);
 
   const handleInputChange = (e) => setMessage(e.target.value);
 
@@ -36,7 +32,10 @@ const ChatInterface = ({ goLeft, check }) => {
 
       const updatedMessages = [...chatMessages, newMessage];
       setChatMessages(updatedMessages);
-      localStorage.setItem("chatMessages", JSON.stringify(updatedMessages));
+      localStorage.setItem(
+        `chatMessages_${pocketIndex}`,
+        JSON.stringify(updatedMessages)
+      );
 
       setMessage("");
     }
@@ -44,7 +43,7 @@ const ChatInterface = ({ goLeft, check }) => {
 
   const formatDate = (date) => {
     const day = date.getDate();
-    const month = date.toLocaleString("default", { month: "short" }); // 'Jan', 'Feb', etc.
+    const month = date.toLocaleString("default", { month: "short" });
     const year = date.getFullYear();
     return `${day}/${month}/${year}`;
   };
@@ -53,30 +52,51 @@ const ChatInterface = ({ goLeft, check }) => {
     return date.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
   };
 
-  return (
-    <div className={`${check ? "chatInterfaceHidden" : "chatInterface"}`}>
-      <div className="PocketList chatInterfaceHeadingDiv">
+  const renderPocketData = () => {
+    if (!selectedPocketData) {
+      return (
+        <div className="chatInterfaceHeadingDiv">
+          <p className="fallbackAbbreviation">MN</p>
+          <p className="fallbackUserDetails">My Notes</p>
+        </div>
+      );
+    }
+
+    return (
+      <div className="chatInterfaceHeadingDiv">
         <button onClick={goLeft}>
           <img src="./backArrow.png" alt="Back" />
         </button>
-        <p>MN</p>
-        <p>My Notes</p>
+        <p style={{ backgroundColor: selectedPocketData.color }}>
+          {selectedPocketData.abbreviation}
+        </p>
+        <p>{selectedPocketData.userDetails}</p>
       </div>
+    );
+  };
 
+  return (
+    <div key={chatKey} className="chatInterface">
+      <div className="PocketList chatInterfaceHeadingDiv">
+        {renderPocketData()}
+      </div>
       <div className="chatViewWrapper">
-        {chatMessages.map((message, index) => (
-          <div key={index} className="chatView">
-            <div className="chatMessage">
-              <p>{message.text}</p>
-              <ul>
-                <li>{message.date}</li>
-                <li>{message.time}</li>
-              </ul>
+        {chatMessages.length > 0 ? (
+          chatMessages.map((message, index) => (
+            <div key={index} className="chatView">
+              <div className="chatMessage">
+                <p>{message.text}</p>
+                <ul>
+                  <li>{message.date}</li>
+                  <li>{message.time}</li>
+                </ul>
+              </div>
             </div>
-          </div>
-        ))}
+          ))
+        ) : (
+          <p></p> //dummy message
+        )}
       </div>
-
       <form onSubmit={handleSubmit}>
         <div className="chatInput">
           <button
@@ -87,7 +107,7 @@ const ChatInterface = ({ goLeft, check }) => {
           </button>
           <textarea
             className="inputField"
-            placeholder="Enter your text here..........."
+            placeholder="Enter your text here..."
             value={message}
             onChange={handleInputChange}
             onKeyDown={(e) => {

@@ -51,7 +51,7 @@
 .PocketList {
   display: flex;
   gap: 10px;
-  align-items: baseline;
+  align-items: center;
   margin: 0 auto;
   font-size: 24px;
   font-weight: 500;
@@ -77,6 +77,8 @@
   background-color: #2f2f2f2b;
   width: 100%;
 }
+
+/* custom */
 
 .PocketListWrapper {
   width: 12.5rem;
@@ -145,7 +147,7 @@
 .createGroupNameDiv input {
   border-radius: 11px;
   border: 1px solid #cccccc;
-  height: 5vh;
+  height: 11vh;
   flex: 1;
   font-size: 2vw;
   width: 50%;
@@ -286,14 +288,19 @@ img {
   color: white;
   overflow-x: hidden;
   align-items: center;
-  width: calc(100% - 10px);
+  width: 100%;
+  display: flex;
+  gap: 17px;
+  align-items: center;
+  margin: 0;
 }
 
 .chatInterfaceHeadingDiv p:first-of-type {
   border-radius: 50%;
   color: white;
-  padding: 15px 10px;
+  padding: 12px;
   background-color: #0047ff;
+  margin-left: 20px;
 }
 
 .chatInterfaceHeadingDiv img {
@@ -352,12 +359,12 @@ img {
 
 .chatInput {
   --padding: 14px;
-  width: max-content;
+  width: 100%;
   display: flex;
   flex-direction: row-reverse;
   padding: var(--padding);
   background-color: #f6f6f6;
-  width: 75%;
+
   justify-content: space-between;
   position: fixed;
   bottom: 0;
@@ -394,11 +401,76 @@ img {
 
 /* Responsive Styles */
 @media (max-width: 738px) {
+  .left {
+    display: flex;
+  }
+
+  .modalContainer {
+    width: 71%;
+    max-width: unset;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 0 auto;
+  }
+
+  .createGroupButton {
+    align-self: center;
+  }
+
+  h1 {
+    font-size: 1em;
+  }
+
+  .RadioDiv {
+    width: 10rem;
+  }
+
+  .RadioDiv input {
+    font-size: 1em;
+    width: 1.1em;
+  }
+
+  /* Hide right component on small screens via class toggle */
   .right {
     display: none;
   }
 
-  .chatInput {
-    width: 100%;
+  .chatInterface {
+    font-size: 16px;
+  }
+
+  .chatInterfaceHeadingDiv {
+    gap: 12px;
+  }
+
+  .chatInterfaceHeadingDiv p:first-of-type {
+    margin: 0;
+    padding: 12px;
+    text-align: center;
+    font-size: 20px;
+  }
+  .chatInterfaceHeadingDiv img {
+    margin-left: 10px;
+    display: block;
+  }
+
+  .chatView p {
+    font-size: unset;
+  }
+
+  .chatView ul {
+    font-size: 9px;
+  }
+
+  .inputField {
+    font-size: 11px;
+  }
+
+  .createGroupNameDiv input {
+    height: 5vh;
   }
 }

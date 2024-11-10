@@ -1,6 +1,10 @@
 import React from "react";
 
 function PocketList({ userDetails, abbreviation, color, isSelected, onClick }) {
+  // function onClick(){
+  //   console.log(index)
+  // }
+
   return (
     <div className="PocketListWrapper">
       <div

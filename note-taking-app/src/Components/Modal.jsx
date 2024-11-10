@@ -18,25 +18,32 @@ const Modal = ({ onSendData }) => {
   };
 
   // Handle form submission
-  const handleSubmit = (e) => {
-    e.preventDefault(); // Prevent form submission
-    const words = inputValue.split(" ");
-    if (words.length < 2) {
-      return;
-    }
-    const abbreviation = `${words[0][0].toUpperCase()}${words[1][0].toUpperCase()}`;
-    const user = {
-      GroupName: inputValue,
-      color: selectedColor,
-      abbreviation: abbreviation,
-    };
+ const handleSubmit = (e) => {
+  e.preventDefault(); // Prevent form submission
+  const words = inputValue.trim().split(/\s+/); // Split input by spaces and trim whitespace
+  let abbreviation = "";
 
-    // Send data to parent component (LeftMainComponent)
-    onSendData(user);
+  if (words.length === 1) {
+    // If there's only one word, take the first letter
+    abbreviation = words[0][0].toUpperCase();
+  } else if (words.length >= 2) {
+    // If there are two or more words, take the first letter of the first and second words
+    abbreviation = `${words[0][0].toUpperCase()}${words[1][0].toUpperCase()}`;
+  }
 
-    // Close the modal after submission
-    ToggleModal();
+  const user = {
+    GroupName: inputValue,
+    color: selectedColor,
+    abbreviation: abbreviation,
   };
+
+  // Send data to parent component (LeftMainComponent)
+  onSendData(user);
+
+  // Close the modal after submission
+  ToggleModal();
+};
+
 
   return (
     <>
