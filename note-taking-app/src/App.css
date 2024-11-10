@@ -58,9 +58,9 @@
   margin-bottom: 4px;
   margin-left: 10px;
   cursor: pointer;
-  /* flex-wrap: wrap; */
   align-content: flex-end;
-  justify-content: start;
+  width: 166px;
+  margin: 0 auto;
 }
 
 .PocketList p:first-child {
@@ -75,13 +75,15 @@
 
 .PocketList.selected {
   background-color: #2f2f2f2b;
-  width: 100%;
 }
 
 /* custom */
+.PocketWrapper {
+  width: 100%;
+}
 
-.PocketListWrapper {
-  width: 12.5rem;
+.PocketWrapper.selected {
+  background-color: #2f2f2f2b;
 }
 
 /* Modal Wrapper */
@@ -105,7 +107,7 @@
   flex-direction: column;
   gap: 2em;
   width: 50%;
-  max-width: 50vw;
+  max-width: 779px;
   padding: 10px;
 }
 
@@ -149,7 +151,7 @@
   border: 1px solid #cccccc;
   height: 11vh;
   flex: 1;
-  font-size: 2vw;
+  font-size: 17px;
   width: 50%;
 }
 
@@ -171,15 +173,17 @@
 
 .colorSelectionDiv span {
   white-space: nowrap;
-  font-size: 2vw;
+  font-size: 29px;
 }
-
+h1 {
+  font-size: 35px;
+}
 form {
   display: flex;
   width: 100%;
   justify-content: center;
   flex-direction: column;
-  gap: 20px;
+  gap: 50px;
 }
 
 .RadioDiv input {
@@ -359,7 +363,7 @@ img {
 
 .chatInput {
   --padding: 14px;
-  width: 100%;
+  width: 75%;
   display: flex;
   flex-direction: row-reverse;
   padding: var(--padding);
@@ -406,15 +410,20 @@ img {
   }
 
   .modalContainer {
-    width: 71%;
+    width: calc(100% - 22px);
+
     max-width: unset;
   }
 
   form {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 48px;
     margin: 0 auto;
+    align-items: center;
+  }
+  .colorSelectionDiv {
+    justify-content: center;
   }
 
   .createGroupButton {
@@ -422,7 +431,7 @@ img {
   }
 
   h1 {
-    font-size: 1em;
+    font-size: 32px;
   }
 
   .RadioDiv {
@@ -468,9 +477,24 @@ img {
 
   .inputField {
     font-size: 11px;
+    width: 100%;
+  }
+
+  .chatInput {
+    width: 100%;
   }
 
   .createGroupNameDiv input {
-    height: 5vh;
+    height: 50px;
+    max-height: 12vh;
   }
+
+  .createGroupNameDiv span,
+  .createGroupNameDiv span,
+  .createGroupNameDiv input::placeholder {
+    font-size: 18px;
+  }
+  .colorSelectionDiv span {
+    font-size: 18px;
+}
 }

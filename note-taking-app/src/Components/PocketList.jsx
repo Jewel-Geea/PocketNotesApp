@@ -1,15 +1,13 @@
 import React from "react";
 
 function PocketList({ userDetails, abbreviation, color, isSelected, onClick }) {
-  // function onClick(){
-  //   console.log(index)
-  // }
+
 
   return (
-    <div className="PocketListWrapper">
+    <div className={`PocketWrapper ${isSelected ? "selected" : ""}`} onClick={onClick} >
       <div
-        className={`PocketList ${isSelected ? "selected" : ""}`} // Add 'selected' class if this div is clicked
-        onClick={onClick} // Trigger the click event
+        className='PocketList' // Add 'selected' class if this div is clicked
+        // Trigger the click event
       >
         <p style={{ backgroundColor: color }}>{abbreviation}</p>
         <p>{userDetails}</p>
