@@ -109,6 +109,7 @@
   width: 50%;
   max-width: 779px;
   padding: 10px;
+  border-radius: 10px;
 }
 
 .modalContainer h2 {
@@ -153,6 +154,7 @@
   flex: 1;
   font-size: 17px;
   width: 50%;
+  max-height:38px;
 }
 
 .createGroupNameDiv input::placeholder {
@@ -299,11 +301,11 @@ img {
   margin: 0;
 }
 
-.chatInterfaceHeadingDiv p:first-of-type {
+.chatInterfaceHeadingDiv .chatInitialWrapper {
   border-radius: 50%;
   color: white;
   padding: 12px;
-  background-color: #0047ff;
+
   margin-left: 20px;
 }
 
@@ -404,6 +406,18 @@ img {
 }
 
 /* Responsive Styles */
+@media (min-width:1530px){
+  .createGroupNameDiv input{
+    max-height: 65px;
+  }
+  .createGroupNameDiv input::placeholder {
+font-size: 17px;
+  }
+  .createGroupButton{
+    height: 60px;
+  }
+}
+
 @media (max-width: 738px) {
   .left {
     display: flex;
@@ -496,5 +510,42 @@ img {
   }
   .colorSelectionDiv span {
     font-size: 18px;
+  }
+
+  .modalButton {
+    left: 258px;
+  }
 }
+
+@media (min-width: 424px) {
+  .colorSelectionDiv {
+    gap: 5px;
+  }
+  .RadioDiv {
+    width: 100%;
+    display: flex;
+    gap: 11px;
+  }
+  .colorSelectionDiv span:first-child{
+    margin-left:23px;
+  }
+}
+
+@media (max-width: 375px) {
+  .createGroupNameDiv {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    height: 35px;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 320px) {
+  .RadioDiv {
+    width: 12rem;
+    display: flex;
+    gap: 2px;
+  }
 }

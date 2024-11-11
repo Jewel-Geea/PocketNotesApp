@@ -67,9 +67,11 @@ const ChatInterface = ({
         <button onClick={goLeft}>
           <img src="./backArrow.png" alt="Back" />
         </button>
-        <p style={{ backgroundColor: selectedPocketData.color }}>
-          {selectedPocketData.abbreviation}
-        </p>
+        <div className="chatInitialWrapper">
+          <p style={{ backgroundColor: selectedPocketData.color }}>
+            {selectedPocketData.abbreviation}
+          </p>
+        </div>
         <p>{selectedPocketData.userDetails}</p>
       </div>
     );

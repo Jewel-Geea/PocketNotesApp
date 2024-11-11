@@ -9,7 +9,9 @@ function PocketList({ userDetails, abbreviation, color, isSelected, onClick }) {
         className='PocketList' // Add 'selected' class if this div is clicked
         // Trigger the click event
       >
-        <p style={{ backgroundColor: color }}>{abbreviation}</p>
+        <div className="initialWrapper">
+          <p style={{ backgroundColor: color }}>{abbreviation}</p>
+        </div>
         <p>{userDetails}</p>
       </div>
     </div>
